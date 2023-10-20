@@ -1,0 +1,236 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My Doc API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/": {},
+        "/api/students": {
+            "get": {
+                "tags": [
+                    "Get"
+                ],
+                "summary": "List",
+                "operationId": "0f95186345f54180fb514d3ae619b847",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "mate"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "mate@hasa.com"
+                                                    },
+                                                    "phone": {
+                                                        "type": "string",
+                                                        "example": "1234567899"
+                                                    },
+                                                    "img": {
+                                                        "type": "string",
+                                                        "format": "jpeg, png, jpg, gif",
+                                                        "example": "https://example.com/image.jpg"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Create Student",
+                "operationId": "aa0044bcc7e0cbaa736f0c20a4a6765c",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "email"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "img": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "mate"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "mate@hasa.com"
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": "1234567899"
+                                        },
+                                        "img": {
+                                            "type": "string",
+                                            "format": "jpeg, png, jpg, gif",
+                                            "example": "https://example.com/image.jpg"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/students/{id}": {
+            "get": {
+                "tags": [
+                    "Get"
+                ],
+                "summary": "List",
+                "operationId": "927ea26e994617f3fb347497e46eb15f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "mate"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "mate@hasa.com"
+                                                    },
+                                                    "phone": {
+                                                        "type": "string",
+                                                        "example": "1234567899"
+                                                    },
+                                                    "img": {
+                                                        "type": "string",
+                                                        "format": "jpeg, png, jpg, gif",
+                                                        "example": "https://example.com/image.jpg"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/students/{id}/edit": {
+            "put": {
+                "tags": [
+                    "Put"
+                ],
+                "summary": "Edit",
+                "operationId": "1390f2dc1c6a1d324616dbf34fec70e8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Student Update Successfully"
+                    },
+                    "404": {
+                        "description": "No Student Found!"
+                    }
+                }
+            }
+        },
+        "/api/students/{id}/delete": {
+            "delete": {
+                "tags": [
+                    "delete"
+                ],
+                "summary": "Delete",
+                "operationId": "ba1db2a7ce8cc61bccdccd15f5fd8d72",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Student Deleted Successfully!"
+                    },
+                    "404": {
+                        "description": "No Student Found!"
+                    }
+                }
+            }
+        }
+    }
+}
