@@ -14,6 +14,28 @@ class StudentController extends Controller
 {
     protected $fileName;
 
+    /**
+     *     @OA\Get(
+     *     path="/api/students",
+     *     summary="List",
+     *     tags={"Get"},
+     * 
+     *     @OA\Response(
+     *         response="200",
+     *         description="Ok",
+     *         @OA\jsonContent(
+     *             @OA\Property(property="data", type="array", @OA\Items(
+     *             @OA\Property(property="name", type="string", example="mate"),
+     *             @OA\Property(property="email", type="string", example="mate@hasa.com"),
+     *             @OA\Property(property="phone", type="string", example="1234567899"),
+     *             @OA\Property(property="img", type="string", format="jpeg, png, jpg, gif", example="https://example.com/image.jpg"),
+     *            )),
+     *           ),
+     *        ),
+     *    ),
+     * ),
+     */
+
     public function index()
     {
         $students = Student::all();
@@ -71,51 +93,8 @@ class StudentController extends Controller
      *         ),
      *     ),
      * ),
-     *      
-     * @OA\Get(
-     *     path="/api/students",
-     *     summary="List",
-     *     tags={"Get"},
      * 
-     *     @OA\Response(
-     *         response="200",
-     *         description="Ok",
-     *         @OA\jsonContent(
-     *             @OA\Property(property="data", type="array", @OA\Items(
-     *             @OA\Property(property="name", type="string", example="mate"),
-     *             @OA\Property(property="email", type="string", example="mate@hasa.com"),
-     *             @OA\Property(property="phone", type="string", example="1234567899"),
-     *             @OA\Property(property="img", type="string", format="jpeg, png, jpg, gif", example="https://example.com/image.jpg"),
-     *            )),
-     *           ),
-     *        ),
-     *    ),
-     * ),
-     *      * @OA\Get(
-     *     path="/api/students/{id}",
-     *     summary="List",
-     *     tags={"Get"},
      * 
-     *         @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *      ),
-     * 
-     *     @OA\Response(
-     *         response="200",
-     *         description="Ok",
-     *         @OA\jsonContent(
-     *             @OA\Property(property="data", type="array", @OA\Items(
-     *             @OA\Property(property="name", type="string", example="mate"),
-     *             @OA\Property(property="email", type="string", example="mate@hasa.com"),
-     *             @OA\Property(property="phone", type="string", example="1234567899"),
-     *             @OA\Property(property="img", type="string", format="jpeg, png, jpg, gif", example="https://example.com/image.jpg"),
-     *            )),
-     *           ),
-     *        ),
-     *    ),
-     * ),
      */
 
     public function store(Request $request)
@@ -165,7 +144,33 @@ class StudentController extends Controller
             }
         }
     }
-
+/**
+     *     @OA\Get(
+     *     path="/api/students/{id}",
+     *     summary="List",
+     *     tags={"Get"},
+     * 
+     *         @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *      ),
+     * 
+     *     @OA\Response(
+     *         response="200",
+     *         description="Ok",
+     *         @OA\jsonContent(
+     *             @OA\Property(property="data", type="array", @OA\Items(
+     *             @OA\Property(property="name", type="string", example="mate"),
+     *             @OA\Property(property="email", type="string", example="mate@hasa.com"),
+     *             @OA\Property(property="phone", type="string", example="1234567899"),
+     *             @OA\Property(property="img", type="string", format="jpeg, png, jpg, gif", example="https://example.com/image.jpg"),
+     *            )),
+     *           ),
+     *        ),
+     *    ),
+     * ),
+ */
     public function show($id)
     {
         $student = Student::find($id);
